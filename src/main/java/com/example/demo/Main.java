@@ -10,8 +10,9 @@ public class Main {
 		SpringApplication.run(Main.class, args);
 
 		int numOfPlayingCards = 16;
+		GameLogic gameLogic = new GameLogic();
 
-		GameLogic.createCards(numOfPlayingCards);
+		gameLogic.createCards(numOfPlayingCards);
 
 	}
 
