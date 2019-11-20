@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameLogic {
@@ -52,6 +53,7 @@ public class GameLogic {
             }
             listOfCards.add(card);
         }
+
         return listOfCards;
     }
 
@@ -60,6 +62,10 @@ public class GameLogic {
         subList2 = listOfCards.subList(4, 8);
         subList3 = listOfCards.subList(8, 12);
         subList4 = listOfCards.subList(12, 16);
+    }
+
+    public void shuffleCards() {
+        Collections.shuffle(listOfCards);
     }
 
 }

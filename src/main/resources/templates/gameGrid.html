@@ -7,7 +7,9 @@
 <body>
     <table>
         <tr>
-            <td th:each="card : ${session.gameLogicKey.subList1}" th:text="${card.cardId}">Cards
+            <td th:each="card : ${session.gameLogicKey.subList1}" >
+                <img th:if="${card.cardId > 2}" th:src="${card.filename}">
+                <img src="../static/backside.png" width="150px" height="150px">Cards
                 <!--<img th:src="@{'/static/Animals/' + ${card.filename}}">-->
             </td>
         </tr><tr>
