@@ -8,6 +8,14 @@ public class GameLogic {
     private int numOfCards;
     private List<MemoryCard> listOfCards;
 
+    public List<MemoryCard> getListOfCards() {
+        return listOfCards;
+    }
+
+    public void setListOfCards(List<MemoryCard> listOfCards) {
+        this.listOfCards = listOfCards;
+    }
+
     public List<MemoryCard> createCards(int numOfCards){
 
         listOfCards = new ArrayList<>();
