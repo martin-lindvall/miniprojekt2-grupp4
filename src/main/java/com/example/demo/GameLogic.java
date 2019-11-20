@@ -36,11 +36,6 @@ public class GameLogic {
 
         }
 
-//        for (int j = 0; j < (numOfCards/2); j++) {
-//            MemoryCard card = new MemoryCard(false, (j+9), "card"+(j+1)+".jpg");
-//            listOfCards.add(card);
-//        }
-
         return listOfCards;
     }
 
