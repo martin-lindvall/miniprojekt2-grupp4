@@ -15,15 +15,16 @@ public class GameLogic {
 
         for (int i = 0; i < (numOfCards); i++) {
 
+            MemoryCard card;
+
             if(i< 8){
-                MemoryCard card = new MemoryCard(false, (i+1), "card"+(i+1)+".jpg");
-                listOfCards.add(card);
+                card = new MemoryCard(false, (i+1), "card"+(i+1)+".png");
             }
             else{
-                MemoryCard card = new MemoryCard(false, (i+1), "card"+(j)+".jpg");
-                listOfCards.add(card);
+                card = new MemoryCard(false, (i+1), "card"+(j)+".png");
                 j++;
             }
+            listOfCards.add(card);
 
         }
 
