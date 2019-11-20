@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td th:each="card : ${session.gameLogicKey.subList1}" >
+                <img th:if="${card.cardId > 2}" th:src="${card.filename}">
+                <img src="../static/backside.png" width="150px" height="150px">Cards
+                <!--<img th:src="@{'/static/Animals/' + ${card.filename}}">-->
+            </td>
+        </tr><tr>
+            <td th:each="card : ${session.gameLogicKey.subList2}" th:text="${card.cardId}">Cards</td>
+        </tr><tr>
+            <td th:each="card : ${session.gameLogicKey.subList3}" th:text="${card.cardId}">Cards</td>
+        </tr><tr>
+            <td th:each="card : ${session.gameLogicKey.subList4}" th:text="${card.cardId}">Cards</td>
+        </tr>
+    </table>
+</body>
+</html>
