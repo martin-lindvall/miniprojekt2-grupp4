@@ -12,6 +12,11 @@ public class MemoryCard {
         this.filename = filename;
     }
 
+    //Changes the status of isVisible
+    public void flip() {
+        isVisible = !isVisible;
+    }
+
     public boolean isVisible() {
         return isVisible;
     }
