@@ -21,25 +21,25 @@ public class loginController {
 }
     @PostMapping("/signup")
     public String signupPost(HttpSession session, @RequestParam(required = false) String username, @RequestParam(required = false)  String password, @RequestParam(required = false)  String mail){
-
-        UserInfo userInfo = new UserInfo(username, password,mail);
+        UserInfo userInfo = new UserInfo(username,password,mail);
+        repository.saveUser(userInfo);
 
         List<String> users = (List<String>)session.getAttribute("users");
-        if(users == null) {
-        users = new ArrayList<>();
-        }
-            //session.setAttribute("username", username);
-        users.add(username);
-        users.add(password);
-        users.add(mail);
+//        if(users == null) {
+//        users = new ArrayList<>();
+//        }
+//            //session.setAttribute("username", username);
+//        users.add(username);
+//        users.add(password);
+//        users.add(mail);
 
         session.setAttribute("users",users);
 
-//        if(repository.getUserInfo(username,password) == null){
+//        if(username.equals()  == null){
 //            return "signup";
 //        }
 
-        return "signup";
+        return "login";
     }
 
     @GetMapping("/login")

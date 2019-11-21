@@ -7,22 +7,30 @@ import java.util.List;
 
 @Service
 public class userRepository {
-    private List<UserInfo> userInfo;
+    private List<UserInfo> users;
 
     public userRepository() {
-        userInfo = new ArrayList<>();
+        users = new ArrayList<>();
 
     }
-public UserInfo getUserInfo (String userName, String password){
-    for (UserInfo users : userInfo) {
-if(users.getUserName() == userName && users.getPassword() == password){
 
-    return users;
-}
+    public void saveUser(UserInfo userInfo){
+        users.add(userInfo);
 
     }
-    return null;
-    }
+
+
+
+//    public UserInfo getUserInfo (String userName, String password){
+//    for (UserInfo users : userInfo) {
+//if(users.getUserName() == userName && users.getPassword() == password){
+//
+//    return users;
+//}
+//
+//    }
+//    return null;
+//    }
 
 
 }
