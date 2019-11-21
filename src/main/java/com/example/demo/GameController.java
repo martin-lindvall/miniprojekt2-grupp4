@@ -23,18 +23,14 @@ public class GameController {
         }
 
         gameLogic.turnCard(cardId);
-        //gameLogic.ifCardsNotEqual();
+        if (gameLogic.getMatchList().size() % 2 == 0) {
+            gameLogic.ifCardsNotEqual();
 
-        MemoryCard card = gameLogic.findCardByCardId(cardId);
-
-        if(cardId != 0){
-            gameLogic.matchCards(card);
         }
-//
-
-//        if(cardId != 0){
-//            gameLogic.matchCards2(cardId);
-//        }
+        if(cardId != 0){
+            gameLogic.matchCards2(cardId);
+        }
+        gameLogic.counter();
 
         return "gameGrid";
     }
