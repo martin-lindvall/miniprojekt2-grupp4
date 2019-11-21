@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/signup" method="POST">
+    Username: <input type="text" name="username"/>
+    Password: <input type="password" name="password"/>
+    Mail: <input type="text" name="mail"/>
+    <input type="Submit" value="Sign up"/>
+</form>
+<ul>
+    <li th:each="userInfo : ${session.users}" th:text="${userInfo}"></li>
+
+</ul>
+
+
+</body>
+</html>
