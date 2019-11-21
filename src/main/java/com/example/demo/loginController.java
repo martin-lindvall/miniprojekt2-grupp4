@@ -16,44 +16,73 @@ public class loginController {
     private userRepository repository;
 
     @GetMapping("/signup")
-    public String signup(){
-    return "signup";
-}
+    public String signup(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("userkey");
+
+        if (user != null && user.getLoggedIn()) {
+            return "gametest";
+        } else {
+
+
+            return "signup";
+        }
+
+
+        
+    }
+
     @PostMapping("/signup")
-    public String signupPost(HttpSession session, @RequestParam(required = false) String username, @RequestParam(required = false)  String password, @RequestParam(required = false)  String mail){
-        UserInfo userInfo = new UserInfo(username,password,mail);
+    public String signupPost(HttpSession session, @RequestParam(required = false) String username, @RequestParam(required = false) String password, @RequestParam(required = false) String mail) {
+        UserInfo userInfo = new UserInfo(username, password, mail, false);
         repository.saveUser(userInfo);
 
-        List<String> users = (List<String>)session.getAttribute("users");
-//        if(users == null) {
-//        users = new ArrayList<>();
-//        }
-//            //session.setAttribute("username", username);
-//        users.add(username);
-//        users.add(password);
-//        users.add(mail);
+//        List<String> users = (List<String>)session.getAttribute("users");
+//        session.setAttribute("users",users);
 
-        session.setAttribute("users",users);
-
-//        if(username.equals()  == null){
-//            return "signup";
 //        }
 
         return "login";
     }
 
     @GetMapping("/login")
-    public String login(){
-    return "login";
+    public String login(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("userkey");
+
+        if (user != null && user.getLoggedIn()) {
+            return "gametest";
+        } else {
+
+
+            return "login";
+        }
+
+
     }
+
     @PostMapping("/login")
-    public String loginPost(HttpSession session, @RequestParam String username, @RequestParam String password){
+    public String loginPost(HttpSession session, @RequestParam String username, @RequestParam String password) {
+//       UserInfo userInfo = repository.getUser();
+        UserInfo user = repository.checkLogin(username, password);
+        if (user.getLoggedIn()) {
+            session.setAttribute("userkey", user);
 
+            return "gametest";
+        } else {
+            return "login";
+        }
 
-        
-        
-        session.setAttribute("username", username);
-        return "gametest";
     }
 
+    @GetMapping("/gametest")
+    public String game(HttpSession session) {
+        UserInfo user = (UserInfo) session.getAttribute("userkey");
+
+        if (user != null && user.getLoggedIn()) {
+            return "gametest";
+        } else {
+
+
+            return "login";
+        }
+    }
 }
