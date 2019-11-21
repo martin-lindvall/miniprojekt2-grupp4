@@ -13,6 +13,7 @@ public class GameController {
     @GetMapping("/grid")
     public String gameBoard(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer cardId) {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
+
         if(gameLogic == null) {
             gameLogic = new GameLogic();
             gameLogic.createCards(Main.numOfPlayingCards);
@@ -20,7 +21,20 @@ public class GameController {
             gameLogic.splitListOfCards();
             session.setAttribute("gameLogicKey", gameLogic);
         }
+
         gameLogic.turnCard(cardId);
+        //gameLogic.ifCardsNotEqual();
+
+        MemoryCard card = gameLogic.findCardByCardId(cardId);
+
+        if(cardId != 0){
+            gameLogic.matchCards(card);
+        }
+//
+
+//        if(cardId != 0){
+//            gameLogic.matchCards2(cardId);
+//        }
 
         return "gameGrid";
     }
