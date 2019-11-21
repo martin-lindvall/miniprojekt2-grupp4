@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form action="/login" method="POST">
-    Username: <input type="text" name="username"/>
-    Password: <input type="password" name="password"/>
-    <input type="submit" value="Login"/>
-</form>
+<hml lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport"content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
 
-</body>
-</html>
+        <title>Title</title>
+    </head>
+    <div class="d-flex justify-content-center align-items-center container ">
+    <div class="form-group row">
+        <div class="p-5 bg-sucess">
+        <div class="text-center">
+            <h3>Please sign in</h3>
+            <form action="/login" method="POST">
+
+            <label for name="username" class="col-md-auto col-form-label">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Your username">
+            <label for password="password" class="col-sm col-form-label">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Your password">
+
+            <div class="col-sm-auto"><div class="p-2 bg-sucess">
+                <input type="submit" value="Login"/>
+            </div>
+            </div>
+                <p><h5>Inte medlem? Registrera dig <a href="/signup">här</a></h5></p></form>
+        </div>
+    </div>
+    </div>
+
+
+
+    </body>
+</hml>
