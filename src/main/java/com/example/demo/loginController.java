@@ -20,7 +20,7 @@ public class loginController {
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
         if (user != null && user.getLoggedIn()) {
-            return "gameGrid";
+            return "redirect:/grid";
         } else {
 
             return "signup";
@@ -46,7 +46,7 @@ public class loginController {
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
         if (user != null && user.getLoggedIn()) {
-            return "gameGrid";
+            return "redirect:/grid";
         } else {
 
 
@@ -63,7 +63,7 @@ public class loginController {
         if (user.getLoggedIn()) {
             session.setAttribute("userkey", user);
 
-            return "gameGrid";
+            return "redirect:/grid";
         } else {
             return "login";
         }

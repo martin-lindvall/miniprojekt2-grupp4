@@ -14,7 +14,9 @@ public class GameController {
     public String gameBoard(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer cardId) {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
         UserInfo user = (UserInfo) session.getAttribute("userkey");
+
         if (user != null && user.getLoggedIn()) {
+
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
                 gameLogic.createCards(Main.numOfPlayingCards);
@@ -34,6 +36,8 @@ public class GameController {
             gameLogic.counter();
 
             return "gameGrid";
+
+
         } else {
 
             return "login";
