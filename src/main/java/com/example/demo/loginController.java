@@ -20,15 +20,12 @@ public class loginController {
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
         if (user != null && user.getLoggedIn()) {
-            return "gametest";
+            return "gameGrid";
         } else {
-
 
             return "signup";
         }
 
-
-        
     }
 
     @PostMapping("/signup")
@@ -49,7 +46,7 @@ public class loginController {
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
         if (user != null && user.getLoggedIn()) {
-            return "gametest";
+            return "gameGrid";
         } else {
 
 
@@ -66,23 +63,22 @@ public class loginController {
         if (user.getLoggedIn()) {
             session.setAttribute("userkey", user);
 
-            return "gametest";
+            return "gameGrid";
         } else {
             return "login";
         }
 
     }
 
-    @GetMapping("/gametest")
-    public String game(HttpSession session) {
-        UserInfo user = (UserInfo) session.getAttribute("userkey");
-
-        if (user != null && user.getLoggedIn()) {
-            return "gametest";
-        } else {
-
-
-            return "login";
-        }
-    }
+//    @GetMapping("/grid")
+//    public String game(HttpSession session) {
+//        UserInfo user = (UserInfo) session.getAttribute("userkey");
+//
+//        if (user != null && user.getLoggedIn()) {
+//            return "gameGrid";
+//        } else {
+//
+//            return "login";
+//        }
+//    }
 }

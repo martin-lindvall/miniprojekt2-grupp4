@@ -13,26 +13,32 @@ public class GameController {
     @GetMapping("/grid")
     public String gameBoard(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer cardId) {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
+        UserInfo user = (UserInfo) session.getAttribute("userkey");
+        if (user != null && user.getLoggedIn()) {
+            if(gameLogic == null) {
+                gameLogic = new GameLogic();
+                gameLogic.createCards(Main.numOfPlayingCards);
+                //gameLogic.shuffleCards();
+                gameLogic.splitListOfCards();
+                session.setAttribute("gameLogicKey", gameLogic);
+            }
 
-        if(gameLogic == null) {
-            gameLogic = new GameLogic();
-            gameLogic.createCards(Main.numOfPlayingCards);
-            //gameLogic.shuffleCards();
-            gameLogic.splitListOfCards();
-            session.setAttribute("gameLogicKey", gameLogic);
+            gameLogic.turnCard(cardId);
+            if (gameLogic.getMatchList().size() % 2 == 0) {
+                gameLogic.ifCardsNotEqual();
+
+            }
+            if(cardId != 0){
+                gameLogic.matchCards2(cardId);
+            }
+            gameLogic.counter();
+
+            return "gameGrid";
+        } else {
+
+            return "login";
         }
 
-        gameLogic.turnCard(cardId);
-        if (gameLogic.getMatchList().size() % 2 == 0) {
-            gameLogic.ifCardsNotEqual();
-
-        }
-        if(cardId != 0){
-            gameLogic.matchCards2(cardId);
-        }
-        gameLogic.counter();
-
-        return "gameGrid";
     }
 
 }
