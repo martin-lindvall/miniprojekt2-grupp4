@@ -8,15 +8,24 @@
     <table>
         <tr>
             <td th:each="card : ${session.gameLogicKey.subList1}" >
-                <img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}">
-                <img src="/backside.png" width="150px" height="150px">Cards
+                <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
+                <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
             </td>
         </tr><tr>
-            <td th:each="card : ${session.gameLogicKey.subList2}" th:text="${card.cardId}">Cards</td>
+        <td th:each="card : ${session.gameLogicKey.subList2}" >
+            <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
+            <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
+        </td>
         </tr><tr>
-            <td th:each="card : ${session.gameLogicKey.subList3}" th:text="${card.cardId}">Cards</td>
+        <td th:each="card : ${session.gameLogicKey.subList3}" >
+            <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
+            <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
+        </td>
         </tr><tr>
-            <td th:each="card : ${session.gameLogicKey.subList4}" th:text="${card.cardId}">Cards</td>
+        <td th:each="card : ${session.gameLogicKey.subList4}" >
+            <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
+            <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
+        </td>
         </tr>
     </table>
 </body>

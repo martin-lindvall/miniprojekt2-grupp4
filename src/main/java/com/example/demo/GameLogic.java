@@ -37,6 +37,7 @@ public class GameLogic {
         this.listOfCards = listOfCards;
     }
 
+    //Generate memory cards
     public List<MemoryCard> createCards(int numOfCards){
 
         listOfCards = new ArrayList<>();
@@ -44,11 +45,10 @@ public class GameLogic {
 
         for (int i = 0; i < (numOfCards); i++) {
             MemoryCard card;
-            if(i< 8){
-                card = new MemoryCard(false, (i+1), "card"+(i+1)+".png");
-            }
-            else{
-                card = new MemoryCard(false, (i+1), "card"+(j)+".png");
+            if(i< 8) {
+                card = new MemoryCard(false, (i+1), "card"+(i+1)+".png"); //creates eight unique cardsId and filenames
+            } else{
+                card = new MemoryCard(true, (i+1), "card"+(j)+".png"); //creates additional eight unique cardId but duplicates of filenames
                 j++;
             }
             listOfCards.add(card);
@@ -57,6 +57,7 @@ public class GameLogic {
         return listOfCards;
     }
 
+    //Splits listOfCards into four sublists, representing the rows in the table
     public void splitListOfCards() {
         subList1 = listOfCards.subList(0, 4);
         subList2 = listOfCards.subList(4, 8);
@@ -64,8 +65,19 @@ public class GameLogic {
         subList4 = listOfCards.subList(12, 16);
     }
 
+    //Shuffles cards
     public void shuffleCards() {
         Collections.shuffle(listOfCards);
+    }
+
+    //Flips selected card
+    public void turnCard(int cardId) {
+       for(MemoryCard card : listOfCards) {
+           if(card.getCardId() == cardId) {
+               card.flip();
+           }
+       }
+
     }
 
 }
