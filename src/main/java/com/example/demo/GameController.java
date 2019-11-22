@@ -16,7 +16,6 @@ public class GameController {
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
         if (user != null && user.getLoggedIn()) {
-        //if (true) {
 
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
@@ -31,13 +30,14 @@ public class GameController {
                 gameLogic.ifCardsNotEqual();
             }
             if(cardId != 0){
-                gameLogic.matchCards2(cardId);
+                gameLogic.matchCards(cardId);
             }
-            if (gameLogic.getGameFinish()) {
-                System.out.println("win");
-                user.setLowScore(gameLogic.getCount());
+//            if (gameLogic.getGameFinish()) {
+//                System.out.println("win");
+//                user.setLowScore(gameLogic.getCount());
+//
+//            }
 
-            }
 
             if(resetGame){
                 gameLogic = null;
