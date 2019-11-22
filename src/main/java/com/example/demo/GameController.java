@@ -32,12 +32,12 @@ public class GameController {
             if(cardId != 0){
                 gameLogic.matchCards(cardId);
             }
-            if (gameLogic.getGameFinish()) {
-                System.out.println("win");
-                user.setLowScore(gameLogic.getCount());
+//            if (gameLogic.getGameFinish()) {
+//                System.out.println("win");
+//                user.setLowScore(gameLogic.getCount());
+//
+//            }
 
-            }
-            
 
             return "gameGrid";
 
