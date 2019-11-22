@@ -1,0 +1,33 @@
+body {
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+}
+
+.cards {
+    #box-shadow: 5px 5px 4px #888888;
+    padding: 15px;
+}
+
+.cards img {
+    box-shadow: 5px 5px 4px #888888;
+    border: 1px solid black;
+}
+
+.form {
+  width: 400px;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  #margin: auto;
+  background-color: #ffffff;
+  border: 1px solid black;
+  #opacity: 0.6;
+  #filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+
+
+
+
