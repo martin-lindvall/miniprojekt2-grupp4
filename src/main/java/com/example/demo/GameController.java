@@ -20,7 +20,7 @@ public class GameController {
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
                 gameLogic.createCards(Main.numOfPlayingCards);
-//                gameLogic.shuffleCards();
+                gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
                 session.setAttribute("gameLogicKey", gameLogic);
                 gameLogic.getCount();
@@ -43,7 +43,7 @@ public class GameController {
                 gameLogic = null;
                 session.setAttribute("gameLogicKey", gameLogic);
                 System.out.println("Reset game");
-                return "redirect: /grid";
+                return "redirect:/grid";
             }
 
             return "gameGrid";
