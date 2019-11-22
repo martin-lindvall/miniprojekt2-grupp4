@@ -11,12 +11,11 @@ import java.util.List;
 public class GameController {
 
     @GetMapping("/grid")
-    public String gameBoard(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer cardId) {
+    public String gameBoard(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer cardId, @RequestParam(required = false, defaultValue = "0") Boolean resetGame) {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
-        //if (user != null && user.getLoggedIn()) {
-        if (true) {
+        if (user != null && user.getLoggedIn()) {
 
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
@@ -31,12 +30,20 @@ public class GameController {
                 gameLogic.ifCardsNotEqual();
             }
             if(cardId != 0){
-                gameLogic.matchCards2(cardId);
+                gameLogic.matchCards(cardId);
             }
-            if (gameLogic.getGameFinish()) {
-                System.out.println("win");
-                user.setLowScore(gameLogic.getCount());
+//            if (gameLogic.getGameFinish()) {
+//                System.out.println("win");
+//                user.setLowScore(gameLogic.getCount());
+//
+//            }
 
+
+            if(resetGame){
+                gameLogic = null;
+                session.setAttribute("gameLogicKey", gameLogic);
+                System.out.println("Reset game");
+                return "redirect:/grid";
             }
 
             return "gameGrid";
