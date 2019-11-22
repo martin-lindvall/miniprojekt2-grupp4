@@ -43,7 +43,7 @@ public class GameController {
                 gameLogic = null;
                 session.setAttribute("gameLogicKey", gameLogic);
                 System.out.println("Reset game");
-                return "redirect:/grid";
+                return "redirect: /grid";
             }
 
             return "gameGrid";
