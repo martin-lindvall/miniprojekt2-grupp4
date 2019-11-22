@@ -12,9 +12,9 @@ public class GameLogic {
     private List<MemoryCard> subList2;
     private List<MemoryCard> subList3;
     private List<MemoryCard> subList4;
-    private String filename11 = "1";
-    private String filename22 = "7";
-    private int count;
+    private String filename1;
+    private String filename2;
+    private int count = -1;
 
     private List<Integer> matchList = new ArrayList<>();
 
@@ -98,26 +98,43 @@ public class GameLogic {
 
             for (MemoryCard card : listOfCards) {
                 if (card.getCardId() == matchList.get(matchList.size()-1)){
-                    filename11 = card.getFilename();
+                    filename1 = card.getFilename();
                 }
                 if (card.getCardId() == matchList.get(matchList.size()-2)) {
-                    filename22 = card.getFilename();
+                    filename2 = card.getFilename();
                 }
             }
         }
     }
     public void ifCardsNotEqual() {
         if(matchList.size() > 1) {
-            if (!filename11.equals(filename22)) {
+            if (!filename1.equals(filename2)) {
                 turnCard(matchList.get(matchList.size() - 1));
                 turnCard(matchList.get(matchList.size() - 2));
             }
         }
     }
 
-    public void counter() {
-        count++;
+    public int getCount() {
+        return count++;
     }
+
+    public boolean getGameFinish() {
+        int numOfVisibleCards = 0;
+        for (MemoryCard m :
+                listOfCards) {
+            if (m.isVisible()) {
+                numOfVisibleCards++;
+                if (numOfVisibleCards == listOfCards.size()) {
+                    userRepository rep = new userRepository();
+                    rep.setUserLowScore(this.count);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
 
 

@@ -15,8 +15,8 @@ public class GameController {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
-        //if (user != null && user.getLoggedIn()) {
-        if (true) {
+        if (user != null && user.getLoggedIn()) {
+        //if (true) {
 
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
@@ -24,17 +24,21 @@ public class GameController {
                 gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
                 session.setAttribute("gameLogicKey", gameLogic);
+                gameLogic.getCount();
+//                user.setLowScore(gameLogic.getCount());
             }
-
             gameLogic.turnCard(cardId);
             if (gameLogic.getMatchList().size() % 2 == 0) {
                 gameLogic.ifCardsNotEqual();
-
             }
             if(cardId != 0){
                 gameLogic.matchCards2(cardId);
             }
-            gameLogic.counter();
+            if (gameLogic.getGameFinish()) {
+                System.out.println("win");
+                user.setLowScore(gameLogic.getCount());
+
+            }
 
             return "gameGrid";
 
@@ -44,7 +48,5 @@ public class GameController {
 
             return "login";
         }
-
     }
-
 }
