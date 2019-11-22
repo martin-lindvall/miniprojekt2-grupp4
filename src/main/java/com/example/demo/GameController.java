@@ -15,15 +15,16 @@ public class GameController {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
-        if (user != null && user.getLoggedIn()) {
+        //if (user != null && user.getLoggedIn()) {
+        if (true) {
+
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
                 gameLogic.createCards(Main.numOfPlayingCards);
-                gameLogic.shuffleCards();
+//                gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
                 session.setAttribute("gameLogicKey", gameLogic);
                 gameLogic.getCount();
-//                user.setLowScore(gameLogic.getCount());
             }
             gameLogic.turnCard(cardId);
             if (gameLogic.getMatchList().size() % 2 == 0) {
