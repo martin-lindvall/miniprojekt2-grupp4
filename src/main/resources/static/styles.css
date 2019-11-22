@@ -6,13 +6,16 @@ body {
 }
 
 .cards {
-    #box-shadow: 5px 5px 4px #888888;
-    padding: 15px;
+    #box-shadow: 3px 3px 3px #737373;
+    padding: 8px;
+    #background-color:rgba(255,255,255,0.8);
+
 }
 
 .cards img {
-    box-shadow: 5px 5px 4px #888888;
+    box-shadow: 5px 5px 4px #595959;
     border: 1px solid black;
+     background-color: white;
 }
 
 .form {
@@ -27,7 +30,23 @@ body {
   #filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 
+.firstrow{
+  padding-top: 20px;
+  margin-top: 20px;
 
+}
+
+
+table{
+    #margin-top: 175px;
+    #border: 1px solid black;
+
+
+}
+
+#secondrow {
+    background-color:rgba(255,255,255,1);
+}
 
 
 
