@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 public class UserInfo {
 private String userName;
 private String password;
@@ -53,18 +55,29 @@ public UserInfo(String userName, String password, String mail, Boolean isLoggedI
     }
 
     public int getLowScore() {
-        return lowScore;
+        int ret = this.lowScore;
+        userRepository rep = new userRepository();
+        for (int i : rep.getUserLowScore()) {
+            if (i < ret) {
+                ret = i;
+            }
+        }
+        return ret;
     }
 
-    public void setLowScore(int highScore) {
-        int ret = highScore;
+    public void setLowScore(int lowScore) {
+        int ret = lowScore;
         userRepository low = new userRepository();
-        for (int i :
-                low.getUserLowScore()) {
+        for (int i : low.getUserLowScore()) {
             if (i < ret) {
                 ret = i;
             }
         }
         this.lowScore = ret;
+    }
+    public List<Integer> getLowScoreList() {
+    userRepository rep = new userRepository();
+    List<Integer> ret = rep.getUserLowScore();
+    return ret;
     }
 }

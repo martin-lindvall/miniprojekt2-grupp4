@@ -57,6 +57,10 @@
     </table>
     <p th:if="${session.gameLogicKey.gameFinish == false}" th:text="'Antal klick: ' + ${session.gameLogicKey.count}"></p>
     <p th:text="'Lowscore: ' + ${session.userkey.lowScore}"></p>
+    <ul th:if="${session.gameLogicKey.gameFinish == true}" th:each="lowscore : ${session.userkey.lowScoreList}">
+        <li th:text="${lowscore}"></li>
+    </ul>
+
 
 
 </body>
