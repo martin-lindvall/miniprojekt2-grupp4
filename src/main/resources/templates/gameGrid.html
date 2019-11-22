@@ -17,6 +17,17 @@
         <img src="logga.png" width="50" height="50" >
         Animal Kingdom Memory
     </a>
+    <div class="btn-group">
+        <button class="btn btn-#e3f2fd; btn-sm dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" th:text="${session.userkey.userName}">
+       <span class="sr-only">test</span>
+        </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+
     <button type="button" class="btn btn-outline-info">
         <a href="/logout">Log Out </a></button>
 </nav>
