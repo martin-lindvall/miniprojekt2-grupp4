@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 <div class="navbar navbar-light" style="background-color: #e3f2fd;">
@@ -31,24 +33,36 @@
     </div> --> </div>
 
 </nav>
-    <table>
+
+    <table align = "center">
+        <tr class ="firstrow">
+            <td colspan=6><h2>Animal Kingdom Memory</h2></td>
+        </tr>
         <tr>
+            <td class = "firstcolumn">&nbsp;</td>
+            <td class = "secondcolumn">&nbsp;</td>
             <td th:each="card : ${session.gameLogicKey.subList1}" class = "cards">
                 <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
                 <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
             </td>
         </tr><tr>
+        <td class = "firstcolumn">&nbsp;</td>
+        <td class = "secondcolumn">&nbsp;</td>
         <td th:each="card : ${session.gameLogicKey.subList2}" class = "cards">
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
         </td>
         </tr><tr>
+        <td class = "firstcolumn">&nbsp;</td>
+        <td class = "secondcolumn">&nbsp;</td>
         <td th:each="card : ${session.gameLogicKey.subList3}" class = "cards">
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
         </td>
 
         </tr><tr>
+        <td class = "firstcolumn">&nbsp;</td>
+        <td class = "secondcolumn">&nbsp;</td>
         <td th:each="card : ${session.gameLogicKey.subList4}" class = "cards">
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>

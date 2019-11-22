@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<div class ="form">
 
 <div class="d-flex justify-content-center align-items-center container  ">
     <div class="p-5 bg-sucess">
@@ -18,7 +23,7 @@
     <div class="text-center">
     <form action="/signup" method="POST">
 
-<h3>Register here</h3>
+<h3>Registrera ny användare här!</h3>
         <label align-text-center for name="mail" class="col-md-auto col-form-label">Mail</label>
         <input type="text" class="form-control" name="mail" placeholder="Your e-mail">
         <label for name="username" class="col-md-auto col-form-label">Username</label>
@@ -40,6 +45,8 @@
     <li th:each="userInfo : ${session.users}" th:text="${userInfo}"></li>
 
 </ul>
+
+</div>
 
 
 </body>

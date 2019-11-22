@@ -16,6 +16,8 @@ public class GameController {
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
         if (user != null && user.getLoggedIn()) {
+        //if (true) {
+
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
                 gameLogic.createCards(Main.numOfPlayingCards);
