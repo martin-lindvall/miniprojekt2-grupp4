@@ -15,8 +15,8 @@ public class GameController {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
         UserInfo user = (UserInfo) session.getAttribute("userkey");
 
-        if (user != null && user.getLoggedIn()) {
-        //if (true) {
+        //if (user != null && user.getLoggedIn()) {
+        if (true) {
 
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
