@@ -36,41 +36,40 @@
 
     <table align = "center">
         <tr class ="firstrow">
-            <td colspan=6><h2>Animal Kingdom Memory</h2></td>
+            <td colspan=4><h2>Animal Kingdom Memory</h2></td>
         </tr>
         <tr>
-            <td class = "firstcolumn">&nbsp;</td>
-            <td class = "secondcolumn">&nbsp;</td>
             <td th:each="card : ${session.gameLogicKey.subList1}" class = "cards">
                 <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
                 <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
             </td>
         </tr><tr>
-        <td class = "firstcolumn">&nbsp;</td>
-        <td class = "secondcolumn">&nbsp;</td>
+
         <td th:each="card : ${session.gameLogicKey.subList2}" class = "cards">
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
         </td>
         </tr><tr>
-        <td class = "firstcolumn">&nbsp;</td>
-        <td class = "secondcolumn">&nbsp;</td>
         <td th:each="card : ${session.gameLogicKey.subList3}" class = "cards">
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
         </td>
 
         </tr><tr>
-        <td class = "firstcolumn">&nbsp;</td>
-        <td class = "secondcolumn">&nbsp;</td>
         <td th:each="card : ${session.gameLogicKey.subList4}" class = "cards">
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${card.visible}" th:src="'/Animals/' + ${card.filename}" width="150px" height="150px"></a>
             <a th:href="'/grid?cardId=' + ${card.cardId}"><img th:if="${!card.visible}" src="/backside.png" width="150px" height="150px"></a>
         </td>
         </tr>
+        <tr class = "firstrow">
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td class ="numofturns" colspan="4" th:if="${session.gameLogicKey.gameFinish == false}" th:text="'Taken turns: ' + ${session.gameLogicKey.count}"></td>
+        </tr>
     </table>
-    <p th:if="${session.gameLogicKey.gameFinish == false}" th:text="'Antal klick: ' + ${session.gameLogicKey.count}"></p>
-    <p th:text="'Lowscore: ' + ${session.userkey.lowScore}"></p>
+
 
 
 </body>
