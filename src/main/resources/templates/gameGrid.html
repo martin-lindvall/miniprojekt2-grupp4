@@ -28,5 +28,9 @@
         </td>
         </tr>
     </table>
+    <p th:if="${session.gameLogicKey.gameFinish == false}" th:text="'Antal klick: ' + ${session.gameLogicKey.count}"></p>
+    <p th:text="'Lowscore: ' + ${session.userkey.lowScore}"></p>
+
+
 </body>
 </html>

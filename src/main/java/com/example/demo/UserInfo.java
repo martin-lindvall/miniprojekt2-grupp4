@@ -5,14 +5,14 @@ private String userName;
 private String password;
 private String mail;
 private Boolean isLoggedIn;
-private int highScore;
+private int lowScore;
 
 public UserInfo(String userName, String password, String mail, Boolean isLoggedIn) {
         this.userName = userName;
         this.password = password;
         this.mail = mail;
         this.isLoggedIn = isLoggedIn;
-        this.highScore = 0;
+        this.lowScore = 0;
 }
 
     public UserInfo(String userName, String password) {
@@ -52,11 +52,19 @@ public UserInfo(String userName, String password, String mail, Boolean isLoggedI
         isLoggedIn = loggedIn;
     }
 
-    public int getHighScore() {
-        return highScore;
+    public int getLowScore() {
+        return lowScore;
     }
 
-    public void setHighScore(int highScore) {
-        this.highScore = highScore;
+    public void setLowScore(int highScore) {
+        int ret = highScore;
+        userRepository low = new userRepository();
+        for (int i :
+                low.getUserLowScore()) {
+            if (i < ret) {
+                ret = i;
+            }
+        }
+        this.lowScore = ret;
     }
 }
