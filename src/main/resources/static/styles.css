@@ -61,4 +61,12 @@ table{
 }
 
 
+.numofturns{
+    text-align: center;
+    font-weight: bold;
+    fort-size: 30px;
+    #background-color:rgba(101, 82, 55,0.8);
+}
+
+
 

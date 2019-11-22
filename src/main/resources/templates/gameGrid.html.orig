@@ -19,8 +19,13 @@
 <body>
 <div class="navbar navbar-light" style="background-color: RGBA(101,82,55,1.0);">
     <a class="navbar-brand" href="#">
+<<<<<<< HEAD
+        <img src="logga.png" width="50" height="50" >
+        <span style="color: #CEE2B3" th:text="'Welcome ' + ${session.userkey.userName}"></span>
+=======
         <img src="nyLogga.png" width="50" height="50" >
-       <span style="color:#CEE2B3" th:text="'Welcome ' + ${session.userkey.userName}"></span>
+        Animal Kingdom Memory
+>>>>>>> ce571aa0ce049c21835c05f333021c2c8a921bb2
     </a>
         <button type="button" class="btn btn-outline-success">
             <a style="color:#CEE2B3 " href="/logout">Log Out </a></button>
@@ -35,7 +40,7 @@
 
     <table align = "center">
         <tr class ="firstrow">
-            <td colspan=6><h2 class="title">Animal Kingdom Memory</h2></td>
+            <td colspan=4><h2>Animal Kingdom Memory</h2></td>
         </tr>
         <tr>
             <td th:each="card : ${session.gameLogicKey.subList1}" class = "cards">
