@@ -1,0 +1,18 @@
+body {
+  #background-image: url("background2.png") opacity: 0.2;
+}
+
+.cards {
+    #box-shadow: 5px 5px 4px #888888;
+    padding: 15px;
+}
+
+.cards img {
+    box-shadow: 5px 5px 4px #888888;
+    border: 1px solid black;
+}
+
+tr {
+
+
+}

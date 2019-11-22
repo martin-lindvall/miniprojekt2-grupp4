@@ -20,7 +20,7 @@ public class GameController {
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
                 gameLogic.createCards(Main.numOfPlayingCards);
-                //gameLogic.shuffleCards();
+                gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
                 session.setAttribute("gameLogicKey", gameLogic);
             }
