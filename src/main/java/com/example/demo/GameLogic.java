@@ -92,7 +92,7 @@ public class GameLogic {
         }
     }
 
-    public void matchCards2(int cardId){
+    public void matchCards(int cardId){
         matchList.add(cardId);
         if(matchList.size() % 2 == 0){
 
