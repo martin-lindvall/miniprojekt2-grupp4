@@ -69,6 +69,11 @@ public class loginController {
         }
 
     }
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "login";
+    }
 
 //    @GetMapping("/grid")
 //    public String game(HttpSession session) {

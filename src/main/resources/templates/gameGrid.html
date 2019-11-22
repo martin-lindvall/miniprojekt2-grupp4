@@ -1,11 +1,36 @@
+
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">
+        <img src="logga.png" width="50" height="50" >
+        Animal Kingdom Memory
+    </a>
+    <button type="button" class="btn btn-outline-info">
+        <a href="/logout">Log Out </a></button>
+   <!-- <div class="btn-group">
+        <div class="text-right-mb-1">
+        <button class="btn btn-#e3f2fd; btn-sm dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" th:text="${session.userkey.userName}">
+        </button>
+
+        </div>
+    </div> --> </div>
+
+</nav>
     <table>
         <tr>
             <td th:each="card : ${session.gameLogicKey.subList1}" class = "cards">
