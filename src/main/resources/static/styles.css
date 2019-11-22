@@ -4,6 +4,16 @@ body {
   background-size: 100%;
 
 }
+@font-face {
+  font-family: 'jungleFont';
+  src: url('TribecaRegular.ttf')  format('truetype');
+}
+
+.title {
+    color: rgb(0,100,0);
+    font-size: 50px;
+    font-family: jungleFont;
+}
 
 .cards {
     #box-shadow: 3px 3px 3px #737373;
@@ -19,12 +29,12 @@ body {
 }
 
 .form {
-  width: 400px;
-  margin-top: 200px;
+  width: 500px;
+  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   #margin: auto;
-  background-color: #ffffff;
+  background-color: rgba(101,82,55,0.3);
   border: 1px solid black;
   #opacity: 0.6;
   #filter: alpha(opacity=60); /* For IE8 and earlier */
@@ -35,7 +45,9 @@ body {
   margin-top: 20px;
 
 }
-
+.link {
+    color: rgb(0,100,0)
+}
 
 table{
     #margin-top: 175px;

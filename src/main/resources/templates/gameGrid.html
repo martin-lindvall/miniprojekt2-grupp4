@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Animal Kingdom Memory</title>
-    <link rel="icon" type="image/png" href="icon.ico">
+    <link rel="icon" type="image/png" href="cardIcon.ico">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport"content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
 <body>
 <div class="navbar navbar-light" style="background-color: RGBA(101,82,55,1.0);">
     <a class="navbar-brand" href="#">
-        <img src="nyLogga.png" width="50" height="50" >
+        <img src="nyLogga2.png" width="50" height="50" >
        <span style="color:#CEE2B3" th:text="'Welcome ' + ${session.userkey.userName}"></span>
     </a>
         <button type="button" class="btn btn-outline-success">
@@ -35,7 +35,7 @@
 
     <table align = "center">
         <tr class ="firstrow">
-            <td colspan=4><h2>Animal Kingdom Memory</h2></td>
+            <td colspan=6><h2 class="title">Animal Kingdom Memory</h2></td>
         </tr>
         <tr>
             <td th:each="card : ${session.gameLogicKey.subList1}" class = "cards">
