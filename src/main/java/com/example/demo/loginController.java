@@ -15,6 +15,11 @@ public class loginController {
     @Autowired
     private userRepository repository;
 
+    @GetMapping("/")
+    public String redirect(){
+        return "redirect:/login";
+    }
+
     @GetMapping("/signup")
     public String signup(HttpSession session) {
         UserInfo user = (UserInfo) session.getAttribute("userkey");
