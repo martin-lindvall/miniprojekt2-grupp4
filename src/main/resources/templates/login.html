@@ -8,31 +8,37 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
+
         <link rel="stylesheet" href="styles.css">
 
         <title>Title</title>
     </head>
 <body>
 
-    <div class="d-flex justify-content-center align-items-center container ">
-    <div class="form-group row">
-        <div class="p-5 bg-sucess">
-        <div class="text-center">
-            <h3>Please sign in</h3>
-            <form action="/login" method="POST">
+    <div class ="form">
+        <div class="d-flex justify-content-center align-items-center container">
+            <div class="form-group row">
+                <div class="p-5 bg-sucess">
+                <div class="text-center">
+                    <h3 class = "title">Välkommen till Animal Kingdom Memory</h3>
+                    <br>
+                    <h5>Vänligen logga in för att spela!</h5>
+                    <form action="/login" method="POST">
 
-            <label for name="username" class="col-md-auto col-form-label">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Your username">
-            <label for password="password" class="col-sm col-form-label">Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Your password">
+                    <label for name="username" class="col-md-auto col-form-label">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Your username">
+                    <label for password="password" class="col-sm col-form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Your password">
 
-            <div class="col-sm-auto"><div class="p-2 bg-sucess">
-                <input type="submit" value="Login"/>
+                    <div class="col-sm-auto"><div class="p-2 bg-sucess">
+                        <input type="submit" value="Login"/>
+                    </div>
+                    </div>
+                        <p><h5>Inte medlem? Registrera dig <a href="/signup">här</a></h5></p></form>
+                </div>
+                </div>
             </div>
-            </div>
-                <p><h5>Inte medlem? Registrera dig <a href="/signup">här</a></h5></p></form>
         </div>
-    </div>
     </div>
 
 

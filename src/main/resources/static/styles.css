@@ -1,5 +1,8 @@
 body {
-  #background-image: url("background2.png") opacity: 0.2;
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
 }
 
 .cards {
@@ -12,7 +15,19 @@ body {
     border: 1px solid black;
 }
 
-tr {
-
-
+.form {
+  width: 400px;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  #margin: auto;
+  background-color: #ffffff;
+  border: 1px solid black;
+  #opacity: 0.6;
+  #filter: alpha(opacity=60); /* For IE8 and earlier */
 }
+
+
+
+
+
