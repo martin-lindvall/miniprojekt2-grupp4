@@ -20,7 +20,7 @@
 <div class="navbar navbar-light" style="background-color: RGBA(101,82,55,1.0);">
     <a class="navbar-brand" href="#">
         <img src="nyLogga.png" width="50" height="50" >
-        Animal Kingdom Memory
+       <span style="color:#CEE2B3" th:text="'Welcome ' + ${session.userkey.userName}"></span>
     </a>
         <button type="button" class="btn btn-outline-success">
             <a style="color:#CEE2B3 " href="/logout">Log Out </a></button>
