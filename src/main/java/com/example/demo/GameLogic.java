@@ -20,6 +20,8 @@ public class GameLogic {
     private String filename1;
     private String filename2;
     private int count = -1;
+    private boolean cardsEqual = false;
+    private boolean cardsNotEqual = false;
 
     private List<Integer> matchList = new ArrayList<>();
 
@@ -49,6 +51,22 @@ public class GameLogic {
 
     public List<MemoryCard> getListOfCards() {
         return listOfCards;
+    }
+
+    public boolean isCardsEqual() {
+        return cardsEqual;
+    }
+
+    public void setCardsEqual(boolean cardsEqual) {
+        this.cardsEqual = cardsEqual;
+    }
+
+    public boolean isCardsNotEqual() {
+        return cardsNotEqual;
+    }
+
+    public void setCardsNotEqual(boolean cardsNotEqual) {
+        this.cardsNotEqual = cardsNotEqual;
     }
 
     public void setListOfCards(List<MemoryCard> listOfCards) {
@@ -116,12 +134,21 @@ public class GameLogic {
             if (!filename1.equals(filename2)) {
                 turnCard(matchList.get(matchList.size() - 1));
                 turnCard(matchList.get(matchList.size() - 2));
+                setCardsEqual(false);
+                setCardsNotEqual(true);
+
+            } else {
+                setCardsEqual(true);
+                setCardsNotEqual(false);
             }
         }
     }
 
+    public void setCount() {
+        count++;
+    }
     public int getCount() {
-        return count++;
+        return this.count;
     }
 
 //    public boolean getGameFinish() {
