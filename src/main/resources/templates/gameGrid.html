@@ -19,6 +19,7 @@
 <body>
 
 <audio th:if="${session.gameLogicKey.cardsEqual}" autoplay> <source src="elephant8.mp3" type="audio/mp3"></audio>
+<audio th:if="${session.gameLogicKey.cardsNotEqual}" autoplay> <source src="monkeypatas.mp3" type="audio/mp3"></audio>
 
 <div class="navbar navbar-light" style="background-color: RGBA(101,82,55,1.0);">
     <a class="navbar-brand" href="#">

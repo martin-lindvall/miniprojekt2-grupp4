@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class GameController {
@@ -23,10 +22,11 @@ public class GameController {
                 gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
                 session.setAttribute("gameLogicKey", gameLogic);
-                gameLogic.getCount();
             }
+            gameLogic.setCount();
             gameLogic.turnCard(cardId);
             gameLogic.setCardsEqual(false);
+            gameLogic.setCardsNotEqual(false);
             if (gameLogic.getMatchList().size() % 2 == 0) {
                 gameLogic.ifCardsNotEqual();
             }
