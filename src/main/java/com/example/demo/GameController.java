@@ -26,6 +26,7 @@ public class GameController {
                 gameLogic.getCount();
             }
             gameLogic.turnCard(cardId);
+            gameLogic.setCardsEqual(false);
             if (gameLogic.getMatchList().size() % 2 == 0) {
                 gameLogic.ifCardsNotEqual();
             }

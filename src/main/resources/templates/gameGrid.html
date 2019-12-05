@@ -17,6 +17,9 @@
 
 </head>
 <body>
+
+<audio th:if="${session.gameLogicKey.cardsEqual}" autoplay> <source src="elephant8.mp3" type="audio/mp3"></audio>
+
 <div class="navbar navbar-light" style="background-color: RGBA(101,82,55,1.0);">
     <a class="navbar-brand" href="#">
         <img src="cardIcon.ico" width="50" height="50" >
@@ -25,9 +28,7 @@
         <button type="button" class="btn btn-outline-success">
             <a style="color:#CEE2B3 " href="/logout">Log Out </a></button>
 
-
         </div>
-
 
 
 
@@ -64,6 +65,7 @@
             <td>&nbsp;</td>
         </tr>
     </table>
+
 
 
 <div class="d-flex justify-content-center align-items-center container">
