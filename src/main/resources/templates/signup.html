@@ -22,16 +22,21 @@
     <div class="p-5 bg-sucess">
 <div class="form-group row">
     <div class="text-center">
-    <form action="/signup" method="POST">
+    <form action="/signup" th:object="${user}" method="POST">
         <p class = "title">Welcome to Animal Kingdom Memory</p>
         
         <h5>Register new user!</h5>
         <label align-text-center for name="mail" class="col-md-auto col-form-label">Mail</label>
-        <input type="text" class="form-control" name="mail" placeholder="Your e-mail">
+        <input type="text" th:field="*{mail}" class="form-control" placeholder="Your e-mail" th:errorclass="error">
+        <label th:if="${#fields.hasErrors('mail')}">Incorrect value in e-mail input!</label>
+
         <label for name="username" class="col-md-auto col-form-label">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Your username">
+        <input type="text" class="form-control" th:field="*{userName}" name="username" placeholder="Your username" th:errorclass="error">
+        <label th:if="${#fields.hasErrors('userName')}">Incorrect value in username input!</label>
+
         <label for password="password" class="col-sm col-form-label">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Your password">
+        <input type="password" class="form-control" th:field="*{password}" name="password" placeholder="Your password" th:errorclass="error">
+        <label th:if="${#fields.hasErrors('password')}">Incorrect value in password input!</label>
 
         <div class="col-sm-auto"><div class="p-2 bg-sucess">
 
