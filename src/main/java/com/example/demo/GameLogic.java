@@ -1,11 +1,13 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Service
 public class GameLogic {
 
     @Autowired
@@ -171,12 +173,19 @@ public class GameLogic {
 
         for (MemoryCard card : listOfCards) {
             if(!card.isVisible()){
-                break;
+                return false;
             }
+
         }
-        repository.saveScoreToDB();
+        System.out.println(getCount());
+        int score = getCount();
+        repository.saveScoreToDB(score);
         return true;
 
+    }
+
+    public void setCountZero(){
+        this.count = -1;
     }
 }
 

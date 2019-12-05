@@ -18,6 +18,7 @@ public class userRepository {
 
     private List<UserInfo> users;
     private List<Integer> userLowScore = new ArrayList<>();
+    private UserInfo player = null;
 
     public userRepository() {
         users = new ArrayList<>();
@@ -40,7 +41,7 @@ public class userRepository {
 
 
     public UserInfo checkLogin (String name, String password) {
-        UserInfo player = null;
+        //UserInfo player = null;
         try(Connection conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Player WHERE Username=? AND Password=?")) {
             ps.setString(1, name);
@@ -100,8 +101,19 @@ public class userRepository {
         return two == 2;
     }
 
-    public void saveScoreToDB() {
-        
+    public void saveScoreToDB(int score) {
+        System.out.println(score + " nu är vi i userRepository!");
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO Points(PlayerId, Points, Kingdom) VALUES(?,?,?)")) {
+            ps.setInt(1, player.getId());
+            ps.setInt(2, score);
+            ps.setString(3, "Animal");
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

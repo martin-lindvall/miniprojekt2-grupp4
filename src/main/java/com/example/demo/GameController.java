@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class GameController {
 
+    @Autowired
+    GameLogic gl;
+
     @GetMapping("/grid")
     public String gameBoard(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer cardId, @RequestParam(required = false, defaultValue = "0") Boolean resetGame) {
         GameLogic gameLogic = (GameLogic)session.getAttribute("gameLogicKey");
@@ -17,10 +21,11 @@ public class GameController {
         if (user != null && user.getLoggedIn()) {
 
             if(gameLogic == null) {
-                gameLogic = new GameLogic();
+                gameLogic = gl;
                 gameLogic.createCards(Main.numOfPlayingCards);
-                gameLogic.shuffleCards();
+                //gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
+                gameLogic.setCountZero();
                 session.setAttribute("gameLogicKey", gameLogic);
             }
             gameLogic.setCount();
@@ -35,11 +40,9 @@ public class GameController {
             }
 
             Boolean win = gameLogic.checkWinCondition();
-            if(win){
-                int score = getCount();
-
-
-            }
+            //if(win){
+                //int score = getCount();
+          //  }
 
 
 
