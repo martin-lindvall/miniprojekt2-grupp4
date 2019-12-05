@@ -1,13 +1,25 @@
 package com.example.demo;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class UserInfo {
+
+@Size(min=1, max=20)
 private String userName;
+@Size(min=6, max=20)
 private String password;
+
+@Email
+@NotBlank
 private String mail;
 private Boolean isLoggedIn;
 private int lowScore;
+
+public UserInfo() {
+}
 
 public UserInfo(String userName, String password, String mail, Boolean isLoggedIn) {
         this.userName = userName;
