@@ -24,6 +24,17 @@ public class GameLogic {
     private int count = -1;
     private boolean cardsEqual = false;
     private boolean cardsNotEqual = false;
+    private List<Integer> playerHighScoreList;
+
+    public List<Integer> getPlayerHighScoreList() {
+        return playerHighScoreList;
+    }
+
+    public void setPlayerHighScoreList(List<Integer> playerHighScoreList) {
+        this.playerHighScoreList = playerHighScoreList;
+    }
+
+
 
     private List<Integer> matchList = new ArrayList<>();
 
@@ -186,6 +197,10 @@ public class GameLogic {
 
     public void setCountZero(){
         this.count = -1;
+    }
+
+    public void generatePlayerHighScore(UserInfo player) {
+        playerHighScoreList = repository.getPlayerHighScoreFromDB(player);
     }
 }
 
