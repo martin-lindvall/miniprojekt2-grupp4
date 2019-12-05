@@ -43,7 +43,7 @@ public class GameController {
                 gameLogic.matchCards(cardId);
             }
 
-            Boolean win = gameLogic.checkWinCondition();
+            Boolean win = gameLogic.checkWinCondition(user);
             //if(win){
                 //int score = getCount();
           //  }

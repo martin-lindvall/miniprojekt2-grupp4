@@ -25,6 +25,7 @@ public class GameLogic {
     private boolean cardsEqual = false;
     private boolean cardsNotEqual = false;
     private List<Integer> playerHighScoreList;
+    private List<Integer> gameHighScoreList;
 
     public List<Integer> getPlayerHighScoreList() {
         return playerHighScoreList;
@@ -180,7 +181,7 @@ public class GameLogic {
 //        return false;
 //    }
 
-    public boolean checkWinCondition() {
+    public boolean checkWinCondition(UserInfo player) {
 
         for (MemoryCard card : listOfCards) {
             if(!card.isVisible()){
