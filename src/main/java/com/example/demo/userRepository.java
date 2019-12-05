@@ -5,10 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,18 +24,56 @@ public class userRepository {
 
     }
 
-    public void saveUser(UserInfo userInfo){
-        users.add(userInfo);
+    public void saveUser(UserInfo userInfo) {
+        //users.add(userInfo);
 
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO Player(Username, Password, Email) VALUES(?,?,?)")) {
+            ps.setString(1, userInfo.getUserName());
+            ps.setString(2, userInfo.getPassword());
+            ps.setString(3, userInfo.getMail());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
+
     public UserInfo checkLogin (String name, String password) {
-        for (UserInfo uInfo : users) {
-            if (uInfo.getUserName().equalsIgnoreCase(name) && uInfo.getPassword().equalsIgnoreCase(password)) {
-               uInfo.setLoggedIn(true);
-                return uInfo;
+        UserInfo player = null;
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM Player WHERE Username=? AND Password=?")) {
+            ps.setString(1, name);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                player = new UserInfo(rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        false,
+                        rs.getInt("playerId"));
+
+                System.out.println(player.getUserName() + " " + player.getPassword() + " " + player.getLoggedIn());
+
+                if(name.equals(player.getUserName()) && password.equals(player.getPassword())) {
+
+                    player.setLoggedIn(true);
+                    System.out.println("Kom in i IF-satsen");
+                }
+                System.out.println(player.getUserName() + player.getLoggedIn());
             }
+            return player;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+//        for (UserInfo uInfo : users) {
+//            if (uInfo.getUserName().equalsIgnoreCase(name) && uInfo.getPassword().equalsIgnoreCase(password)) {
+//               uInfo.setLoggedIn(true);
+//                return uInfo;
+//            }
+//        }
 
         return null;
     }
@@ -64,6 +99,8 @@ public class userRepository {
         }
         return two == 2;
     }
+
+
     //    public UserInfo getUserInfo (String userName, String password){
 //    for (UserInfo users : userInfo) {
 //if(users.getUserName() == userName && users.getPassword() == password){

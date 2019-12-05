@@ -60,21 +60,17 @@ public class loginController {
         if (user != null && user.getLoggedIn()) {
             return "redirect:/grid";
         } else {
-
-
             return "login";
         }
-
-
     }
 
     @PostMapping("/login")
     public String loginPost(HttpSession session, @RequestParam String username, @RequestParam String password) {
 //       UserInfo userInfo = repository.getUser();
         UserInfo user = repository.checkLogin(username, password);
-        if (user.getLoggedIn()) {
+        
+        if (user != null && user.getLoggedIn()) {
             session.setAttribute("userkey", user);
-
             return "redirect:/grid";
         } else {
             return "login";
