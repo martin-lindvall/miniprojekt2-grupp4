@@ -17,6 +17,7 @@ public class GameController {
 
         if (user != null && user.getLoggedIn()) {
 
+
             if(gameLogic == null) {
                 gameLogic = new GameLogic();
                 gameLogic.createCards(Main.numOfPlayingCards);
@@ -46,7 +47,7 @@ public class GameController {
                 return "redirect:/grid";
             }
 
-            return "gameGrid";
+            return "gameGrid2";
 
 
         }
