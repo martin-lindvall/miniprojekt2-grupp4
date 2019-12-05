@@ -116,6 +116,27 @@ public class userRepository {
 
     }
 
+    public List<Integer> getPlayerHighScoreFromDB(UserInfo player){
+
+        List<Integer> playerHighScore = new ArrayList<>(0);
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT TOP (5) Points FROM Points INNER JOIN Player ON Points.PlayerId = Player.PlayerId WHERE Player.PlayerId = ? ORDER BY Points desc")){
+            ps.setInt(1, player.getId());
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                playerHighScore.add(rs.getInt("Points"));
+            }
+
+            return playerHighScore;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return playerHighScore;
+    }
+
 
     //    public UserInfo getUserInfo (String userName, String password){
 //    for (UserInfo users : userInfo) {

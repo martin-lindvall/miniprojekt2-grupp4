@@ -12,6 +12,8 @@ public class GameController {
 
     @Autowired
     GameLogic gl;
+    @Autowired
+    private userRepository repository;
 
     @GetMapping("/grid")
     public String gameBoard(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer cardId, @RequestParam(required = false, defaultValue = "0") Boolean resetGame) {
@@ -27,6 +29,9 @@ public class GameController {
                 //gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
                 gameLogic.setCountZero();
+                
+
+
                 session.setAttribute("gameLogicKey", gameLogic);
             }
             gameLogic.setCount();
