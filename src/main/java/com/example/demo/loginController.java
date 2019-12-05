@@ -66,9 +66,8 @@ public class loginController {
 
     @PostMapping("/login")
     public String loginPost(HttpSession session, @RequestParam String username, @RequestParam String password) {
-//       UserInfo userInfo = repository.getUser();
         UserInfo user = repository.checkLogin(username, password);
-        
+
         if (user != null && user.getLoggedIn()) {
             session.setAttribute("userkey", user);
             return "redirect:/grid";
@@ -83,17 +82,4 @@ public class loginController {
         return "login";
     }
 
-
-
-//    @GetMapping("/grid")
-//    public String game(HttpSession session) {
-//        UserInfo user = (UserInfo) session.getAttribute("userkey");
-//
-//        if (user != null && user.getLoggedIn()) {
-//            return "gameGrid";
-//        } else {
-//
-//            return "login";
-//        }
-//    }
 }

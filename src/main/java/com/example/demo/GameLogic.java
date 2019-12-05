@@ -1,10 +1,15 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class GameLogic {
+
+    @Autowired
+    private userRepository repository;
 
     private int numOfCards;
     private List<MemoryCard> listOfCards;
@@ -119,22 +124,33 @@ public class GameLogic {
         return count++;
     }
 
-    public boolean getGameFinish() {
-        int numOfVisibleCards = 0;
-        for (MemoryCard m :
-                listOfCards) {
-            if (m.isVisible()) {
-                numOfVisibleCards++;
-                if (numOfVisibleCards == listOfCards.size()) {
-                    userRepository rep = new userRepository();
-                    rep.setUserLowScore(this.count);
-                    return true;
-                }
+//    public boolean getGameFinish() {
+//        int numOfVisibleCards = 0;
+//        for (MemoryCard m :
+//                listOfCards) {
+//            if (m.isVisible()) {
+//                numOfVisibleCards++;
+//                if (numOfVisibleCards == listOfCards.size()) {
+//                    userRepository rep = new userRepository();
+//                    rep.setUserLowScore(this.count);
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+
+    public boolean checkWinCondition() {
+
+        for (MemoryCard card : listOfCards) {
+            if(!card.isVisible()){
+                break;
             }
         }
-        return false;
-    }
+        repository.saveScoreToDB();
+        return true;
 
+    }
 }
 
 

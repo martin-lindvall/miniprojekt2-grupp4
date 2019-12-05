@@ -100,6 +100,10 @@ public class userRepository {
         return two == 2;
     }
 
+    public void saveScoreToDB() {
+        
+    }
+
 
     //    public UserInfo getUserInfo (String userName, String password){
 //    for (UserInfo users : userInfo) {

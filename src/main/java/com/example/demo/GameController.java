@@ -32,6 +32,16 @@ public class GameController {
             if(cardId != 0){
                 gameLogic.matchCards(cardId);
             }
+
+            Boolean win = gameLogic.checkWinCondition();
+            if(win){
+                int score = getCount();
+
+
+            }
+
+
+
 //            if (gameLogic.getGameFinish()) {
 //                System.out.println("win");
 //                user.setLowScore(gameLogic.getCount());
