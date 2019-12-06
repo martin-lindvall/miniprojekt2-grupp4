@@ -28,6 +28,7 @@ public class GameController {
                 gameLogic.splitListOfCards();
                 gameLogic.setCountZero();
                 gameLogic.generatePlayerHighScore(user);
+                gameLogic.generateGameHighScore();
 
 
                 session.setAttribute("gameLogicKey", gameLogic);

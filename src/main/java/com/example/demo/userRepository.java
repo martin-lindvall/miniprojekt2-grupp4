@@ -136,6 +136,29 @@ public class userRepository {
             e.printStackTrace();
         }
         return playerHighScore;
+
+    }
+//    private List<Integer> gameHighScore = new ArrayList<>(0);
+//    private List<String> gameHighScoreName = new ArrayList<>(0);
+
+    public List<UserHighscore> getGameHighScoreFromDB(){
+        List<UserHighscore> gameHighScores = new ArrayList<>(0);
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT TOP (5) Points, Username FROM Points INNER JOIN Player ON Points.PlayerId = Player.PlayerId WHERE Kingdom = ? ORDER BY Points")){
+            ps.setString(1, "Animal");
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                gameHighScores.add(new UserHighscore(rs.getInt("Points"), rs.getString("Username")));
+            }
+
+            return gameHighScores;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return gameHighScores;
     }
 
 

@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +26,7 @@ public class GameLogic {
     private boolean cardsEqual = false;
     private boolean cardsNotEqual = false;
     private List<Integer> playerHighScoreList;
-    private List<Integer> gameHighScoreList;
+    private List<String> gameHighScoreList;
 
     public List<Integer> getPlayerHighScoreList() {
         return playerHighScoreList;
@@ -35,7 +36,13 @@ public class GameLogic {
         this.playerHighScoreList = playerHighScoreList;
     }
 
+    public List<String> getGameHighScoreList() {
+        return gameHighScoreList;
+    }
 
+    public void setGameHighScoreList(List<String> gameHighScoreList) {
+        this.gameHighScoreList = gameHighScoreList;
+    }
 
     private List<Integer> matchList = new ArrayList<>();
 
@@ -202,6 +209,15 @@ public class GameLogic {
 
     public void generatePlayerHighScore(UserInfo player) {
         playerHighScoreList = repository.getPlayerHighScoreFromDB(player);
+    }
+
+    public void generateGameHighScore() {
+        List<UserHighscore> getScores = repository.getGameHighScoreFromDB();
+        gameHighScoreList = new ArrayList<>();
+        for (UserHighscore h :
+                getScores) {
+            gameHighScoreList.add(h.getUserName() + ": " + h.getScore());
+        }
     }
 }
 
