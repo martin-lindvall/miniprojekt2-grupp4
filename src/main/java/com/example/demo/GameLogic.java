@@ -12,6 +12,8 @@ public class GameLogic {
 
     @Autowired
     private userRepository repository;
+
+    //Class variables
     private List<MemoryCard> listOfCards;
     private List<MemoryCard> subList1;
     private List<MemoryCard> subList2;
@@ -27,7 +29,7 @@ public class GameLogic {
 
 
 
-
+    //Getters and setters
     public List<Integer> getPlayerHighScoreList() {
         return playerHighScoreList;
     }
