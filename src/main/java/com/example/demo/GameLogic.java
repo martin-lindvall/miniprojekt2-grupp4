@@ -194,13 +194,11 @@ public class GameLogic {
             if(!card.isVisible()){
                 return false;
             }
-
         }
         System.out.println(getCount());
         int score = getCount();
         repository.saveScoreToDB(score);
         return true;
-
     }
 
     public void setCountZero(){

@@ -121,7 +121,7 @@ public class userRepository {
         List<Integer> playerHighScore = new ArrayList<>(0);
 
         try(Connection conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT TOP (5) Points FROM Points INNER JOIN Player ON Points.PlayerId = Player.PlayerId WHERE Player.PlayerId = ? AND Kingdom = ? ORDER BY Points desc")){
+            PreparedStatement ps = conn.prepareStatement("SELECT TOP (5) Points FROM Points INNER JOIN Player ON Points.PlayerId = Player.PlayerId WHERE Player.PlayerId = ? AND Kingdom = ? ORDER BY Points asc")){
             ps.setInt(1, player.getId());
             ps.setString(2, "Animal");
             ResultSet rs = ps.executeQuery();

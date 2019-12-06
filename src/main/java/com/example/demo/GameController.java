@@ -44,7 +44,6 @@ public class GameController {
                 gameLogic.matchCards(cardId);
             }
 
-            Boolean win = gameLogic.checkWinCondition(user);
             //if(win){
                 //int score = getCount();
           //  }
@@ -64,6 +63,9 @@ public class GameController {
                 System.out.println("Reset game");
                 return "redirect:/grid";
             }
+
+            Boolean win = gameLogic.checkWinCondition(user);
+
 
             return "gameGrid2";
 
