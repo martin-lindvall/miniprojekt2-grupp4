@@ -26,7 +26,6 @@ public class userRepository {
     }
 
     public void saveUser(UserInfo userInfo) {
-        //users.add(userInfo);
 
         try(Connection conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO Player(Username, Password, Email) VALUES(?,?,?)")) {
@@ -41,7 +40,7 @@ public class userRepository {
 
 
     public UserInfo checkLogin (String name, String password) {
-        //UserInfo player = null;
+
         try(Connection conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Player WHERE Username=? AND Password=?")) {
             ps.setString(1, name);
@@ -68,13 +67,6 @@ public class userRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-//        for (UserInfo uInfo : users) {
-//            if (uInfo.getUserName().equalsIgnoreCase(name) && uInfo.getPassword().equalsIgnoreCase(password)) {
-//               uInfo.setLoggedIn(true);
-//                return uInfo;
-//            }
-//        }
 
         return null;
     }
@@ -138,8 +130,6 @@ public class userRepository {
         return playerHighScore;
 
     }
-//    private List<Integer> gameHighScore = new ArrayList<>(0);
-//    private List<String> gameHighScoreName = new ArrayList<>(0);
 
     public List<UserHighscore> getGameHighScoreFromDB(){
         List<UserHighscore> gameHighScores = new ArrayList<>(0);
@@ -162,16 +152,6 @@ public class userRepository {
     }
 
 
-    //    public UserInfo getUserInfo (String userName, String password){
-//    for (UserInfo users : userInfo) {
-//if(users.getUserName() == userName && users.getPassword() == password){
-//
-//    return users;
-//}
-//
-//    }
-//    return null;
-//    }
 
 
 }

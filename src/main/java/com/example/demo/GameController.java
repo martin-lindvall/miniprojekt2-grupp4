@@ -24,7 +24,7 @@ public class GameController {
             if(gameLogic == null) {
                 gameLogic = gl;
                 gameLogic.createCards(Main.numOfPlayingCards);
-                //gameLogic.shuffleCards();
+                gameLogic.shuffleCards();
                 gameLogic.splitListOfCards();
                 gameLogic.setCountZero();
                 gameLogic.generatePlayerHighScore(user);
@@ -44,18 +44,6 @@ public class GameController {
                 gameLogic.matchCards(cardId);
             }
 
-            //if(win){
-                //int score = getCount();
-          //  }
-
-
-
-//            if (gameLogic.getGameFinish()) {
-//                System.out.println("win");
-//                user.setLowScore(gameLogic.getCount());
-//
-//            }
-
 
             if(resetGame){
                 gameLogic = null;
@@ -64,7 +52,7 @@ public class GameController {
                 return "redirect:/grid";
             }
 
-            Boolean win = gameLogic.checkWinCondition(user);
+            gameLogic.checkWinCondition(user);
 
 
             return "gameGrid2";

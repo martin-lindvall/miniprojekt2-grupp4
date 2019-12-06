@@ -3,7 +3,6 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,8 +12,6 @@ public class GameLogic {
 
     @Autowired
     private userRepository repository;
-
-    private int numOfCards;
     private List<MemoryCard> listOfCards;
     private List<MemoryCard> subList1;
     private List<MemoryCard> subList2;
@@ -27,6 +24,9 @@ public class GameLogic {
     private boolean cardsNotEqual = false;
     private List<Integer> playerHighScoreList;
     private List<String> gameHighScoreList;
+
+
+
 
     public List<Integer> getPlayerHighScoreList() {
         return playerHighScoreList;
@@ -172,21 +172,6 @@ public class GameLogic {
         return this.count;
     }
 
-//    public boolean getGameFinish() {
-//        int numOfVisibleCards = 0;
-//        for (MemoryCard m :
-//                listOfCards) {
-//            if (m.isVisible()) {
-//                numOfVisibleCards++;
-//                if (numOfVisibleCards == listOfCards.size()) {
-//                    userRepository rep = new userRepository();
-//                    rep.setUserLowScore(this.count);
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
 
     public boolean checkWinCondition(UserInfo player) {
 

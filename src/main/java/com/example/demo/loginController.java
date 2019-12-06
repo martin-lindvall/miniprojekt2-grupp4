@@ -42,13 +42,9 @@ public class loginController {
             model.addAttribute("user", user);
             return "signup";
         }
-        //UserInfo userInfo = new UserInfo(username, password, mail, false);
+
         repository.saveUser(user);
 
-//        List<String> users = (List<String>)session.getAttribute("users");
-//        session.setAttribute("users",users);
-
-//        }
 
         return "login";
     }
