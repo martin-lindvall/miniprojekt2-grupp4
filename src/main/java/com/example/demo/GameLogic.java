@@ -28,8 +28,119 @@ public class GameLogic {
     private List<String> gameHighScoreList;
 
 
+    //Generate memory cards
+    public List<MemoryCard> createCards(int numOfCards) {
 
-    //Getters and setters
+        listOfCards = new ArrayList<>();
+        int j = 1;
+
+        for (int i = 0; i < (numOfCards); i++) {
+            MemoryCard card;
+            if (i < 8) {
+                card = new MemoryCard(false, (i + 1), "card" + (i + 1) + ".png"); //creates eight unique cardsId and filenames
+            } else {
+                card = new MemoryCard(false, (i + 1), "card" + (j) + ".png"); //creates additional eight unique cardId but duplicates of filenames
+                j++;
+            }
+            listOfCards.add(card);
+        }
+
+        return listOfCards;
+    }
+
+    //Splits listOfCards into four sublists, representing the rows in the table
+    public void splitListOfCards() {
+        subList1 = listOfCards.subList(0, 4);
+        subList2 = listOfCards.subList(4, 8);
+        subList3 = listOfCards.subList(8, 12);
+        subList4 = listOfCards.subList(12, 16);
+    }
+
+    //Shuffles cards
+    public void shuffleCards() {
+        Collections.shuffle(listOfCards);
+    }
+
+    //Flips selected card
+    public void turnCard(int cardId) {
+        for (MemoryCard card : listOfCards) {
+            if (card.getCardId() == cardId) {
+                card.flip();
+            }
+        }
+    }
+
+    public void matchCards(int cardId){
+        matchList.add(cardId);
+        if(matchList.size() % 2 == 0){
+
+            for (MemoryCard card : listOfCards) {
+                if (card.getCardId() == matchList.get(matchList.size()-1)){
+                    filename1 = card.getFilename();
+                }
+                if (card.getCardId() == matchList.get(matchList.size()-2)) {
+                    filename2 = card.getFilename();
+                }
+            }
+        }
+    }
+
+    public void ifCardsNotEqual() {
+        if(matchList.size() > 1) {
+            if (!filename1.equals(filename2)) {
+                turnCard(matchList.get(matchList.size() - 1));
+                turnCard(matchList.get(matchList.size() - 2));
+                setCardsEqual(false);
+                setCardsNotEqual(true);
+
+            } else {
+                setCardsEqual(true);
+                setCardsNotEqual(false);
+            }
+        }
+    }
+
+    public void setCount() {
+        count++;
+    }
+    public int getCount() {
+        return this.count;
+    }
+
+
+    public boolean checkWinCondition(UserInfo player) {
+
+        for (MemoryCard card : listOfCards) {
+            if(!card.isVisible()){
+                return false;
+            }
+        }
+        System.out.println(getCount());
+        int score = getCount();
+        repository.saveScoreToDB(score);
+        return true;
+    }
+
+    public void setCountZero(){
+        this.count = -1;
+    }
+
+    public void generatePlayerHighScore(UserInfo player) {
+        playerHighScoreList = repository.getPlayerHighScoreFromDB(player);
+    }
+
+    public void generateGameHighScore() {
+        List<UserHighscore> getScores = repository.getGameHighScoreFromDB();
+        gameHighScoreList = new ArrayList<>();
+        for (UserHighscore h :
+                getScores) {
+            gameHighScoreList.add(h.getUserName() + ": " + h.getScore());
+        }
+    }
+
+
+
+    //Getters and Setters
     public List<Integer> getPlayerHighScoreList() {
         return playerHighScoreList;
     }
@@ -96,114 +207,6 @@ public class GameLogic {
         this.listOfCards = listOfCards;
     }
 
-    //Generate memory cards
-    public List<MemoryCard> createCards(int numOfCards) {
-
-        listOfCards = new ArrayList<>();
-        int j = 1;
-
-        for (int i = 0; i < (numOfCards); i++) {
-            MemoryCard card;
-            if (i < 8) {
-                card = new MemoryCard(false, (i + 1), "card" + (i + 1) + ".png"); //creates eight unique cardsId and filenames
-            } else {
-                card = new MemoryCard(false, (i + 1), "card" + (j) + ".png"); //creates additional eight unique cardId but duplicates of filenames
-                j++;
-            }
-            listOfCards.add(card);
-        }
-
-        return listOfCards;
-    }
-
-    //Splits listOfCards into four sublists, representing the rows in the table
-    public void splitListOfCards() {
-        subList1 = listOfCards.subList(0, 4);
-        subList2 = listOfCards.subList(4, 8);
-        subList3 = listOfCards.subList(8, 12);
-        subList4 = listOfCards.subList(12, 16);
-    }
-
-    //Shuffles cards
-    public void shuffleCards() {
-        Collections.shuffle(listOfCards);
-    }
-
-    //Flips selected card
-    public void turnCard(int cardId) {
-        for (MemoryCard card : listOfCards) {
-            if (card.getCardId() == cardId) {
-                card.flip();
-            }
-        }
-    }
-
-    public void matchCards(int cardId){
-        matchList.add(cardId);
-        if(matchList.size() % 2 == 0){
-
-            for (MemoryCard card : listOfCards) {
-                if (card.getCardId() == matchList.get(matchList.size()-1)){
-                    filename1 = card.getFilename();
-                }
-                if (card.getCardId() == matchList.get(matchList.size()-2)) {
-                    filename2 = card.getFilename();
-                }
-            }
-        }
-    }
-    public void ifCardsNotEqual() {
-        if(matchList.size() > 1) {
-            if (!filename1.equals(filename2)) {
-                turnCard(matchList.get(matchList.size() - 1));
-                turnCard(matchList.get(matchList.size() - 2));
-                setCardsEqual(false);
-                setCardsNotEqual(true);
-
-            } else {
-                setCardsEqual(true);
-                setCardsNotEqual(false);
-            }
-        }
-    }
-
-    public void setCount() {
-        count++;
-    }
-    public int getCount() {
-        return this.count;
-    }
-
-
-    public boolean checkWinCondition(UserInfo player) {
-
-        for (MemoryCard card : listOfCards) {
-            if(!card.isVisible()){
-                return false;
-            }
-        }
-        System.out.println(getCount());
-        int score = getCount();
-        repository.saveScoreToDB(score);
-        return true;
-    }
-
-    public void setCountZero(){
-        this.count = -1;
-    }
-
-    public void generatePlayerHighScore(UserInfo player) {
-        playerHighScoreList = repository.getPlayerHighScoreFromDB(player);
-    }
-
-    public void generateGameHighScore() {
-        List<UserHighscore> getScores = repository.getGameHighScoreFromDB();
-        gameHighScoreList = new ArrayList<>();
-        for (UserHighscore h :
-                getScores) {
-            gameHighScoreList.add(h.getUserName() + ": " + h.getScore());
-        }
-    }
 }
 
 

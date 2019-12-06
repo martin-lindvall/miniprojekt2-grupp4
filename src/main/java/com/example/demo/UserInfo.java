@@ -3,7 +3,6 @@ package com.example.demo;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 public class UserInfo {
 
@@ -16,7 +15,6 @@ private String password;
 @NotBlank
 private String mail;
 private Boolean isLoggedIn;
-private int lowScore;
 private int id;
 
 public UserInfo() {
@@ -27,7 +25,6 @@ public UserInfo(String userName, String password, String mail, Boolean isLoggedI
         this.password = password;
         this.mail = mail;
         this.isLoggedIn = isLoggedIn;
-        this.lowScore = 0;
         this.id = id;
 }
 
@@ -76,30 +73,5 @@ public UserInfo(String userName, String password, String mail, Boolean isLoggedI
         isLoggedIn = loggedIn;
     }
 
-    public int getLowScore() {
-        int ret = this.lowScore;
-        userRepository rep = new userRepository();
-        for (int i : rep.getUserLowScore()) {
-            if (i < ret) {
-                ret = i;
-            }
-        }
-        return ret;
-    }
 
-    public void setLowScore(int lowScore) {
-        int ret = lowScore;
-        userRepository low = new userRepository();
-        for (int i : low.getUserLowScore()) {
-            if (i < ret) {
-                ret = i;
-            }
-        }
-        this.lowScore = ret;
-    }
-    public List<Integer> getLowScoreList() {
-    userRepository rep = new userRepository();
-    List<Integer> ret = rep.getUserLowScore();
-    return ret;
-    }
 }
